@@ -1,52 +1,40 @@
-
-### Get this product for $5
-
-<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
-
-
-<b><p align='center'>[Buy now](https://packt.link/9781787289086)</p></b>
-
-
-<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
-
-
 # TypeScript: Modern JavaScript Development
 
-This is the code repository for the course, TypeScript: Modern JavaScript Development published by Packt. It has all the codes present in the course.
+## Table of Contents
 
-##What you will learn
+- [TypeScript: Modern JavaScript Development](#typescript-modern-javascript-development)
+  - [Table of Contents](#table-of-contents)
+  - [Introducing TypeScript](#introducing-typescript)
+    - [The TypeScript Architecture](#the-typescript-architecture)
+      - [TypeScript Components](#typescript-components)
+      - [TypeScript Language Features](#typescript-language-features)
 
-* Understand the key TypeScript language features and runtime
-* Install and configure the necessary tools in order to start developing an application
-* Create object-oriented code that adheres to the SOLID principles
-* Develop robust applications with testing (Mocha, Chai, and SinonJS)
-* Apply GoF patterns in an application with a testing approach
-* Identify the challenges when developing an application
-* Migrate JavaScript codebases to TypeScript to improve your workflow
-* Utilize System.JS and Webpack to load scripts and their dependencies
-* Develop high performance server-side applications to run within Node.js
+## Introducing TypeScript
 
-##Notes
-###Module 1
-* There are no codes for the chapters: 1, 2, 4, 6, and 8
-* You will need Node.js,npm package manager for compiling this codes along with the Typescript compiler. You might also need these packages and add ons, Gulp, Karma, tslint, atom text editor, tsd, sinonjs, browsersync for some codes in this module.
+### The TypeScript Architecture
 
-###Module 2
-* There are no codes for the chapters: 8 and 9
-* Chapter 8 is mainly about explaining SOLID principles, so the code snippets is about concept without actual implementation.
-* Chapter 9 is about a workflow and related configurations, so it is rather trivial to put them as code snippets into files.
+#### TypeScript Components
 
-###Module 3
-* There are no codes for chapter 10.
+Divided into 3 layers and each layer is divided into sublayers or components
 
-##Related Products
-* [TypeScript 2.0 Cookbook](https://www.packtpub.com/web-development/typescript-20-cookbook?utm_source=github&utm_campaign=9781782175612&utm_medium=repository)
-* [TypeScript Blueprints](https://www.packtpub.com/application-development/typescript-blueprints?utm_source=github&utm_campaign=9781785887017&utm_medium=repository)
+Layer 1:
 
-###Suggestion and feedback
+- Visual Studio (VS) Language Service
+- VS Shim (shims.ts)
 
-[Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
-### Download a free PDF
+Layer 2:
 
- <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
-<p align="center"> <a href="https://packt.link/free-ebook/9781787289086">https://packt.link/free-ebook/9781787289086 </a> </p>
+- Language Service (service.ts)
+- Core TypeScript Compiler (core.ts, program.ts, scanner.ts, parser.ts, checker.ts, emitter.ts)
+
+Layer 3:
+
+- Standalone TS Compiler (tsc.ts)
+
+Each of these main layers has a different purpose:
+
+- The language: it features the TS language elements
+- The compiler: it performs the parsing, type checking, and transformation of your TS code to JS code
+- The language services: it generates information that helps editors and other tools provide better assistance features such as IntelliSense or automated refactoring
+
+#### TypeScript Language Features

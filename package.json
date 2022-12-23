@@ -1,0 +1,25 @@
+{
+  "name": "typescript-modern-javascript-development",
+  "version": "1.0.0",
+  "description": "## Table of Contents",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgoshen/TypeScript-Modern-JavaScript-Development.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgoshen/TypeScript-Modern-JavaScript-Development/issues"
+  },
+  "homepage": "https://github.com/rgoshen/TypeScript-Modern-JavaScript-Development#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "eslint": "^8.30.0"
+  }
+}
