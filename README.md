@@ -12,6 +12,12 @@
     - [Variables, Basic Types, and Operators](#variables-basic-types-and-operators)
       - [var, let, and const](#var-let-and-const)
       - [Union Types](#union-types)
+      - [Type Guards](#type-guards)
+      - [Type Aliases](#type-aliases)
+      - [Ambient Declarations](#ambient-declarations)
+    - [Arithmetic Operators](#arithmetic-operators)
+    - [Comparison Operators](#comparison-operators)
+    - [Logical Operators](#logical-operators)
 
 ## Introducing TypeScript
 
@@ -120,3 +126,96 @@ path = '/temp/log.xml';
 path = ['/temp/log.xml', '/temp/errors.xml'];
 path = 1; // Error
 ```
+
+Union types are used to declare a variable that is able to store a value of two or more types.
+
+#### Type Guards
+
+```ts
+var x: any = { /* ... */ };
+
+if(typeof x === 'string') {
+  console,.log(x.splice(3, 1)); // Error, 'splice' does not exist on 'string'
+}
+
+// x is still any
+x.foo(); // OK
+```
+
+#### Type Aliases
+
+TS allows us to declare type aliases by using the `type` keyword
+
+```ts
+type PrimitiveArray = Array<strin | number | boolean>;
+type MyNumber = number;
+type NgScope = ng.IScope;
+type Callback = () => void;
+```
+
+Type aliases are exactly the same type as their original types; they are simply alternative names.
+
+#### Ambient Declarations
+
+- allows you to create a variable in your TS code that will not be translated into JS at compilation time
+- designed to facilitate integration with the existing JS code, the **DOM (Document Object Model)** and **BOM (Browser Object Model)**
+
+```ts
+customConsole.log('A log entry!'); //error
+
+// Cannot fine name 'customConsole'
+```
+
+- sometimes we want to invoke an object that has not been defined, the console or window objects
+
+```ts
+console.log('Log Entry!');
+
+var host = window.location.hostname;
+```
+
+- when we access DOM or BOM objects, we don't get an error because these objects have already been declared in a special TS file known as **declaration files**
+
+```ts
+interface ICustomConsole {
+  log(arg: string): void;
+}
+declare var customConsole: ICustomConsole;
+
+customConsole.log('A log entry!'); // ok
+```
+
+- TS includes, by default, a file named `lib.d.ts` that provides interface declarations for the built-in JS library as well as the DOM
+- declaration files use the file extension `.d.ts` and are used to increase the TS compatibility with third-party libraries and run-time environments such as Node.js or a web browser
+
+### Arithmetic Operators
+
+| Operator | Description                                                          | Example          |
+| -------- | -------------------------------------------------------------------- | ---------------- |
+| +        | This adds two operands                                               | A + B = 30       |
+| -        | This subtracts the second operand from the first                     | A - B = -10      |
+| \*       | This multiplies both the operands                                    | A \* B = 200     |
+| /        | This divides the numerator by the denominator                        | B / A = 2        |
+| %        | This is the modulus operator and remainder after an integer division | B % A = 0        |
+| ++       | This is the increment operator than increases the integer value by 1 | A++ will give 11 |
+| --       | This is the decrement operator that decreases the integer value by 1 | A-- will give 9  |
+
+### Comparison Operators
+
+| Operator | Description                                                                                                                                            | Example                                |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| ==       | This checks whether the values of two operands are equal or not. If yes, then the condition becomes true                                               | (A == B) is false. A == "10" is true.  |
+| ===      | This checks whether the value and type of the two operands are equal or not. If yes, then the condition becomes true.                                  | A === B is false. A === "10" is false. |
+| !=       | This checks whether the values of two operands are equal or not. If the values are not equal, then the condition becomes true.                         | (A != B) is true                       |
+| >        | This checks whether the value of the left operand is greater than the value of the right operand; if yes, then the condition becomes true.             | (A > B) is false                       |
+| <        | This checks whether the value of the left operand is less than the value of the right operand; if yes, then the condition becomes true.                | (A < B) is true                        |
+| >=       | This checks whether the value of the left operand is greater than or equal to the value of the right operand; if yes, then the condition becomes true. | (A >= B) is false                      |
+| <=       | This checks whether the value of the left operand is less than or equal to the value of the right operand; if yes, then the condition becomes true.    | (A <= B) is true                       |
+
+### Logical Operators
+
+| Operator | Description                                                                                                                                                                | Example             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| &&       | This is called the logical AND operator. If both the operands are nonzero, then the condition becomes true                                                                 | (A && B) is true    |
+| \|\|     | This is called the logical OR operator. If any of the two operands are nonzero, then the condition becomes true                                                            | (A \| \| B) is true |
+| \!       | This is called the logical NOT operator. It is used to reverse the logical state of its operand. If a condition is true, then the logical NOT operator will make it false. | \!(A && B) is false |
